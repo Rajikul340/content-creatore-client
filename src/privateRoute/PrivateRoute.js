@@ -1,19 +1,16 @@
-import React, { useContext } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
-import { AuthUser } from '../AuthContext/AuthContext';
+import React from 'react';
+import { Route, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-const PrivateRoute = ({children}) => {
-    const{loading, user} = useContext(AuthUser);
-    const location = useLocation();
+const  PrivateRoute =({ path, element }) => {
+  const isAuthenticatation = useSelector(state => state.auth.isAuthenticatation);
+  console.log('isauthenticated', isAuthenticatation);
 
-if(user){
-return children
+  return isAuthenticatation ? (
+    <Route path={path} element={element} />
+  ) : (
+    <Navigate to="/" replace />
+  );
 }
-if(loading){
-    return <p>Loading....</p>
-}
-
-    return <Navigate to='/login' state={{from:location}} replace/>
-};
 
 export default PrivateRoute;

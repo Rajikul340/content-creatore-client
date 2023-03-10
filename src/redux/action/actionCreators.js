@@ -1,4 +1,5 @@
-import { LOGIN_USER, SIGNOUT_USER, SIGNUP_USER } from "./actionTypes";
+import app from "../../firbase/firebase";
+import { LOGIN_USER, SET_LOADING, SIGNOUT_USER, SIGNUP_USER } from "./actionTypes";
 
 export const loginuser = (payload) => {
   return {
@@ -13,11 +14,64 @@ export const signOutUser = () => {
   };
 };
 
-export const signInUser = (email, password) => (dispatch) => {
-  console.log(email, password);
+export const setLoading = (isLoading) =>{
+  return {
+    type: SET_LOADING,
+    payload: isLoading
+  }
+
+}
+
+export const signInUser = (email, password,setSuccess, setError) => (dispatch) => {
+  dispatch(setLoading(true))
+  app
+    .auth()
+    .signInWithEmailAndPassword(email, password)
+    .then((user) => {
+      console.log('login user',user);
+      setSuccess(true)
+      dispatch(setLoading(false))
+
+    })
+    .catch((err) => {
+      console.log(err);
+      setError(err)
+    });
+  // console.log(email, password);
 };
 
-export const signUpUser = (name, email, password) => (dispatch) => {};
+export const signUpUser = (name, email, password, setSuccess, setError) => (dispatch) => {
+  dispatch(setLoading(true))
+  app
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then((user) => {
+    
+      app
+        .auth()
+        .currentUser.updateProfile({
+          displayName: name,
+        })
+        .then(() => {
+          const currentUser = app.auth().currentUser;
+          // console.log('current user', currentUser);
+          dispatch(
+            loginuser({
+              uid: currentUser.uid,
+              name: currentUser.displayName,
+              email: currentUser.email,
+              photo: currentUser.photoURL,
+            })
+            );
+            setSuccess(true)
+            dispatch(setLoading(false)) })
+    })
+    .catch((err) => {
+      console.log(err);
+      setError(err)
+    });
+  // console.log("sign up uder", name, email, password);
+};
 
 export const logOutUser = () => (dispatch) => {
   dispatch(signOutUser());

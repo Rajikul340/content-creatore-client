@@ -1,14 +1,36 @@
-import { Provider } from "react-redux";
-import { RouterProvider } from "react-router-dom";
-import { store } from "./redux/store/store";
-import { routers } from "./routes/routes";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './redux/store/store';
+import Home from './pages/Home';
+import Profile from './dashboard/Profile';
+import ErrorPage from './pages/ErrorPage';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Layout from './layouts/Layout';
+import PrivateRoute from './privateRoute/PrivateRoute';
 
 function App() {
   return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </Router>
+  );
+}
+
+function Root() {
+  return (
     <Provider store={store}>
-      <RouterProvider router={routers} />
+      <App />
     </Provider>
   );
 }
 
-export default App;
+export default Root;

@@ -1,20 +1,37 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { SmallSpiner } from "../Component/smallSpiner";
+import { signUpUser } from "../redux/action/actionCreators";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
+  const [error, setError] = useState("")
+  const dispatch = useDispatch();
+  const isLoading = useSelector((state)=>state.auth.isLoading)  
+  console.log(isLoading);
 
- 
 
   const handleSubmit = (e) => {
+    
     e.preventDefault();
- 
+
+    dispatch(signUpUser(name, email, password, setSuccess, setError));
   };
+
+  useEffect(()=>{
+  
+     if(success){
+      navigate("/")
+     
+     }
+  },[success, navigate])
 
   return (
     <div className="border md:mt-5 mt-2 md:w-1/2 mx-auto">
@@ -63,10 +80,12 @@ const Register = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <p className="text-red-500">error</p>
+          <p className="text-red-500">{error ? error : ""}</p>
 
           <button type="submit" className="btn btn-primary mt-4 w-11/12">
-            Register
+              {
+                isLoading ? <SmallSpiner/> : "Register"
+              }
           </button>
           <p>
             already have an account please{" "}

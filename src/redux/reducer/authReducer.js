@@ -1,7 +1,8 @@
-import { LOGIN_USER, SIGNOUT_USER } from "../action/actionTypes"
+import { LOGIN_USER, SET_LOADING, SIGNOUT_USER, SIGNUP_USER } from "../action/actionTypes"
 
 const initialState = {
-    isAuthenticatation:false,
+    isLoading:false,
+    isAuthenticated:false,
     user:{},
 
 }
@@ -14,12 +15,23 @@ export const authReducer=(state=initialState, action)=>{
                 isAuthenticatation:true,
                 user:action.payload
             }
+            case SIGNUP_USER:
+                return {
+                    ...state,
+                    user:action.payload
+
+                }
             case SIGNOUT_USER:
                 return {
                     ...state,
                     isAuthenticatation: false,
                     user: {}
                 }
+                case SET_LOADING:
+                    return {
+                        ...state,
+                        isLoading:action.payload
+                    }
             default:
                 return state;
     }

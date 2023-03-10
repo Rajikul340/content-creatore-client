@@ -1,20 +1,34 @@
-import React, {  useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import React, {  useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { SmallSpiner } from "../Component/smallSpiner";
 import { signInUser } from "../redux/action/actionCreators";
 
 const Login = () => {
       const [email, setEmail] = useState("")   
       const [password, setPassword] = useState("");
-      const dispatch = useDispatch()
+      const [success, setSuccess] = useState(false);
+      const [error, setError] = useState("")
+      const dispatch = useDispatch();
+      const navigate = useNavigate()
+      const isLoading = useSelector((state)=>state.auth.isLoading);  
 
  
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-   console.log(email, password);
-     dispatch(signInUser(email, password))
+
+     dispatch(signInUser(email, password,setSuccess, setError))
+     
   };
+
+  useEffect(()=>{
+  
+    if(success){
+     navigate("/")
+    
+    }
+ },[success, navigate])
 
 
 
@@ -47,10 +61,12 @@ const Login = () => {
           value={password}
           onChange={(e)=>setPassword(e.target.value)}
         />
-        <p className="text-red-500">{}</p>
+        <p className="text-red-500">{error}</p>
 
         <button type="submit" className="btn btn-primary mt-4 max-w-xs ">
-          login
+            {
+              isLoading ? <SmallSpiner/> : "Login"
+            }
         </button>
         <p>
           create a new account{" "}
