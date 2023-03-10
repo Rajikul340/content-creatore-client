@@ -18,7 +18,7 @@ const NavBar = () => {
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link to="/dashboard/profile">dashboard</Link>
+            <Link to="/dashboard">dashboard</Link>
           </li>
           {email && uid ? (
             <>
