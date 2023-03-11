@@ -2,7 +2,6 @@ import { ADD_CONTENT } from "../action/actionTypes";
 
 const initialContentState = {
   content: [],
-  Name: "Rajikul islam",
 };
 
 export const contentReducer = (state = initialContentState, action) => {
@@ -10,7 +9,7 @@ export const contentReducer = (state = initialContentState, action) => {
     case ADD_CONTENT:
       return {
         ...state,
-        content: action.payload,
+        content: [...state.content, action.payload],
       };
     default:
       return state;

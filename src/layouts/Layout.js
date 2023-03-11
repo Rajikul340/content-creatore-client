@@ -5,9 +5,10 @@ import NavBar from '../Component/NavBar';
 const Layout = () => {
 
     return (
-        <div>
+        <div className='w-11/12 mx-auto'>
             <NavBar/>
-            <Outlet/>
+             <hr/>
+            <Outlet />
         </div>
     );
 };

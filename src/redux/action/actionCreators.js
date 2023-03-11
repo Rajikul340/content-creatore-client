@@ -1,5 +1,5 @@
 import app from "../../firbase/firebase";
-import { LOGIN_USER, SET_LOADING, SIGNOUT_USER, SIGNUP_USER } from "./actionTypes";
+import { ADD_CONTENT, LOGIN_USER, SET_LOADING, SIGNOUT_USER, SIGNUP_USER } from "./actionTypes";
 
 export const loginuser = (payload) => {
   return {
@@ -76,3 +76,13 @@ export const signUpUser = (name, email, password, setSuccess, setError) => (disp
 export const logOutUser = () => (dispatch) => {
   dispatch(signOutUser());
 };
+
+ //content action
+
+
+export  const addContent = (content) =>{
+  return {
+    type: ADD_CONTENT,
+    payload: content
+  }
+ }

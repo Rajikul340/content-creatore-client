@@ -1,11 +1,11 @@
 import React from 'react';
 
-const ContentList = () => {
+const contentList = () => {
     return (
-        <div className='bg-red-500'>
-            <h1>content list </h1>
+        <div>
+            <h1>this is content list page </h1>
         </div>
     );
 };
 
-export default ContentList;
+export default contentList;
