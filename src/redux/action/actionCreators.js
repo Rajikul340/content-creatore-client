@@ -1,5 +1,5 @@
 import app from "../../firbase/firebase";
-import { ADD_CONTENT,GET_CONTENT_SUCCESS,LOGIN_USER, SET_LOADING, SIGNOUT_USER, SIGNUP_USER } from "./actionTypes";
+import { ADD_CONTENT,DELETE_CONTENT,GET_CONTENT_SUCCESS,LOGIN_USER, SET_LOADING, SIGNOUT_USER, SIGNUP_USER } from "./actionTypes";
 
 export const loginuser = (payload) => {
   return {
@@ -86,11 +86,9 @@ export  const addContent = (content) =>{
   }
  }
 
- //get all content 
-
- const loaddata = (data) =>{
-  return{
-    type: GET_CONTENT_SUCCESS,
-    payload: data
+ export const removeContent = (id) =>{
+  return {
+      type: DELETE_CONTENT,
+      payload: id
   }
- }
+  }

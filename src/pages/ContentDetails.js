@@ -1,0 +1,21 @@
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+
+const ContentDetails = () => {
+
+  const content = useSelector((state) => state.content);
+  const {  loading, contentData } = content;
+//  console.log(contentData);
+ 
+ if(loading) return <p>Loading...</p>
+    return (
+        <div>
+          <h1 className='md:text-4xl text-2xl font-bold py-2'>{contentData.title} </h1>
+           <img src={contentData.Image} alt="img"/>
+           <p className='py-4'>{contentData.description}</p>
+        </div>
+    );
+};
+
+export default ContentDetails;

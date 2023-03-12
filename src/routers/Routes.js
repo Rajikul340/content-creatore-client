@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import ContentDetails from "../pages/ContentDetails";
 import ContentList from "../dashboard/contentList";
 import PostContent from "../dashboard/postContent";
 import Profile from "../dashboard/Profile";
@@ -22,6 +23,11 @@ export const routers = createBrowserRouter([
                 element:<Home/>
 
             },
+            { 
+                path:"/home/:id",
+                element:<ContentDetails/>
+
+            },
             {
                 path:"login",
                 element:<Login/>
@@ -38,7 +44,7 @@ export const routers = createBrowserRouter([
         children:[
             {
                 path:"/dashboard",
-                element:<Profile/>
+                element:<PostContent/>
             },
             {
                 path:"/dashboard/content",
