@@ -19,7 +19,7 @@ const SideBar = () => {
             className={activeButton === "button1" ? "bg-[#F7F7F7]  " : ""}
           >
             <Link
-              className="capitalize hover:text-[#8B8B8B] text-lg md:text-[16px] pointer md:pl-3 md:pr-20  px-2"
+              className="capitalize hover:text-[#8B8B8B]  md:text-[16px] pointer md:pl-3 md:pr-20  px-2"
               to="/dashboard/content"
             >
               post content

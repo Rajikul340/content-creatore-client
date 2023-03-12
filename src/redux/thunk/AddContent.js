@@ -4,12 +4,12 @@ import { addContent } from "../action/actionCreators";
 
 
 
-const addContentData = (content) =>{
+const addContentData = (contents) =>{
        const {successMessage} = AlertMessage()
     return async (dispatch, getState)=>{
     const res= await fetch("http://localhost:5000/contents", {
         method:"POST",
-        body: JSON.stringify(content),
+        body: JSON.stringify(contents),
         headers: {
             "content-type": "application/json"
         }
@@ -24,7 +24,7 @@ const addContentData = (content) =>{
         dispatch(
             addContent({
               _id: data.insertedId,
-              ...content,
+              ...contents,
             })
           );
    }

@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import addContentData from "../redux/thunk/AddProduct";
+import addContentData from "../redux/thunk/AddContent";
 
 const PostContent = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -10,7 +10,6 @@ const PostContent = () => {
   const submit = (data) => {
     const formData = new FormData();
     formData.append("image", data.image[0]);
-
     fetch(
       "https://api.imgbb.com/1/upload?key=19900dd0d8e1013079c1d14e32346566",
       {
@@ -19,19 +18,17 @@ const PostContent = () => {
       }
     )
       .then((res) => res.json())
-      .then((data) => {
-       
-        const     photo_url = data.data.display_url;
-        const content = {
-            title: data.title,
-            description: data.description,
-            photo_url
-          };
-      
-          dispatch(addContentData(content));
+      .then((img) => {
+        const photo_url = img.data.display_url;
+        const contents = {
+          title: data.title,
+          description: data.description,
+           Image: photo_url,
+        };
+        //  console.log(contents);
+        dispatch(addContentData(contents));
       });
 
- 
     reset();
   };
 
@@ -60,6 +57,7 @@ const PostContent = () => {
             </label>
             <input
               type="file"
+              required
               name="image"
               className="border outline-0"
               id="image"

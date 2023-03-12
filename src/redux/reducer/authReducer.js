@@ -12,7 +12,7 @@ export const authReducer=(state=initialState, action)=>{
         case LOGIN_USER:
             return {
                 ...state,
-                isAuthenticatation:true,
+                isAuthenticated:true,
                 user:action.payload
             }
             case SIGNUP_USER:
@@ -24,7 +24,7 @@ export const authReducer=(state=initialState, action)=>{
             case SIGNOUT_USER:
                 return {
                     ...state,
-                    isAuthenticatation: false,
+                    isAuthenticated: false,
                     user: {}
                 }
                 case SET_LOADING:
