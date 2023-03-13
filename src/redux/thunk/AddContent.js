@@ -14,8 +14,7 @@ const addContentData = (contents) =>{
             "content-type": "application/json"
         }
     })
-   const data = res.json();
-       console.log(data);
+   const data = res.json()
        successMessage(
         "content add to the server"
     );

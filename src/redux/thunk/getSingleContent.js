@@ -2,7 +2,7 @@ import { GET_CONTENT_FAILURE, GET_CONTENT_REQUEST, GET_CONTENT_SUCCESS } from ".
 
 
 export const GetSingleContent = (id) => {
-       console.log(id);
+     
   return async (dispatch) => {
     try {
   

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { GetSingleContent } from '../redux/thunk/getSingleContent';
 
 const Card = ({data}) => {
-    console.log(data.id);
+
       const dispatch= useDispatch();
 
 

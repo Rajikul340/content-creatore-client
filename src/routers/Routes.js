@@ -2,13 +2,13 @@ import { createBrowserRouter } from "react-router-dom";
 import ContentDetails from "../pages/ContentDetails";
 import ContentList from "../dashboard/contentList";
 import PostContent from "../dashboard/postContent";
-import Profile from "../dashboard/Profile";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Layout from "../layouts/Layout";
 import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import UpdatePage from "../dashboard/UpdatePage";
 
 
 
@@ -53,6 +53,10 @@ export const routers = createBrowserRouter([
             {
                 path:"/dashboard/contentList",
                 element:<ContentList/>
+            },
+            {
+                path:"/dashboard/contentList/:id",
+                element: <UpdatePage/>
             }
         ]
      }

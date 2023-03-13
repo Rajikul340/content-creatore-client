@@ -7,9 +7,8 @@ import { GetContent } from "../redux/thunk/getContent";
 const Home = () => {
   const dispatch = useDispatch();
   const content = useSelector((state) => state.content);
-  const { error, loading, contentData } = content;
+  const {  loading, contentData } = content;
 
-      console.log('loading', loading);
   useEffect(() => {
     dispatch(GetContent());
   }, [dispatch]);

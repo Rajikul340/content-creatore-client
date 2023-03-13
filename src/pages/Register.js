@@ -15,7 +15,7 @@ const Register = () => {
   const [error, setError] = useState("")
   const dispatch = useDispatch();
   const isLoading = useSelector((state)=>state.auth.isLoading)  
-  console.log(isLoading);
+ 
 
 
   const handleSubmit = (e) => {

@@ -6,7 +6,7 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const { uid, email } = user;
-  console.log("navbar user ", user);
+  // console.log("navbar user ", user);
 
   return (
     <div className="navbar bg-base-100 ">
