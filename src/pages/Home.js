@@ -29,29 +29,43 @@ const Home = () => {
     dispatch(lasUploadContent(item));
   };
 
-  let displyContent ;
+  let displyContent;
 
-   if(contentData){
-    displyContent= Array.isArray(contentData) && contentData.length > 0 ? (
-      <div className="grid md:grid-cols-3 gap-4 md:mt-5">
-        {contentData?.map((item, index) => (
-          <Card key={item._id} data={item} handleAddToHistory={handleAddToHistory} />
-        ))}
-      </div>
-    ) : (
-      <p>No content available</p>
-    )
-   }
+  if (contentData) {
+    displyContent =
+      Array.isArray(contentData) && contentData.length > 0 ? (
+        <div className="grid md:grid-cols-3 gap-4 md:mt-5">
+          {contentData?.map((item, index) => (
+            <Card
+              key={item._id}
+              data={item}
+              handleAddToHistory={handleAddToHistory}
+            />
+          ))}
+        </div>
+      ) : (
+        <p>No content available</p>
+      );
+  }
   if (search) {
-    displyContent = Array.isArray(contentData) && contentData.length > 0 ? (
-      <div className="grid md:grid-cols-3 gap-4 md:mt-5">
-        {contentData?.filter(seacrContent=>seacrContent.tags.toLowerCase().includes(search.toLowerCase())).map((item, index) => (
-          <Card key={item._id} data={item} handleAddToHistory={handleAddToHistory} />
-        ))}
-      </div>
-    ) : (
-      <p>No content available</p>
-    )
+    displyContent =
+      Array.isArray(contentData) && contentData.length > 0 ? (
+        <div className="grid md:grid-cols-3 gap-4 md:mt-5">
+          {contentData
+            ?.filter((seacrContent) =>
+              seacrContent.tags.toLowerCase().includes(search.toLowerCase())
+            )
+            .map((item, index) => (
+              <Card
+                key={item._id}
+                data={item}
+                handleAddToHistory={handleAddToHistory}
+              />
+            ))}
+        </div>
+      ) : (
+        <p>No content available</p>
+      );
   }
   return (
     <div>
@@ -63,7 +77,7 @@ const Home = () => {
           id="title"
           onChange={(e) => dispatch(searchContent(e.target.value))}
         />
-  
+
         <button className="btn btn-xs btn-primary mt-3">Filter</button>
         <button
           onClick={() => handleSortByLastUploadDate("asc")}
@@ -78,10 +92,7 @@ const Home = () => {
           Fist upload
         </button>
       </div>
- {
-  displyContent
- }
-    
+      {displyContent}
     </div>
   );
 };

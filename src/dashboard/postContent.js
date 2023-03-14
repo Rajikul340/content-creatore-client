@@ -71,13 +71,12 @@ const PostContent = () => {
             <label className="mb-2" htmlFor="tags">
               Tags
             </label>
-            <input
-              type="text"
-              className="border outline-0"
-              id="tags"
-              required
-              {...register("tags")}
-            />
+            <select className="border outline-0 " name='tags' id='tags' {...register("tags")}>
+            <option value='life'>Life</option>
+            <option value='programming'>programming</option>
+            <option value='world'>world</option>
+            <option value='country'>country</option>
+          </select>
           </div>
           <div className="flex flex-col w-full max-w-xs">
             <label className="mb-2" htmlFor="image">
