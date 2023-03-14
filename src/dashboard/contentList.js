@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ListItems from "../Component/ListItems";
+import { getUpdatedata } from "../redux/action/actionCreators";
 import { GetContent } from "../redux/thunk/getContent";
 
 const ContentList = () => {
@@ -13,6 +14,11 @@ const ContentList = () => {
   }, [dispatch]);
 
   if (loading) return <p>Loading..</p>;
+
+  const handleGetId=(id)=>{
+    const newData = contentData.filter(p=>p._id === id);
+     dispatch(getUpdatedata(newData))
+}    
 
   return (
     <div>
@@ -29,8 +35,12 @@ const ContentList = () => {
             </tr>
           </thead>
           <tbody>
-            {contentData?.map((singledata, index) => (
-              <ListItems data={singledata} index={index} key={singledata._id} />
+            {contentData?.map((singleData, index) => (
+              <ListItems 
+              data={singleData}
+               index={index} 
+               handleGetId={handleGetId}
+               key={singleData._id} />
             ))}
           </tbody>
         </table>

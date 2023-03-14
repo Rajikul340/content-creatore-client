@@ -13,8 +13,9 @@ export const updateDataAsync = (data) => async (dispatch) => {
            'Content-Type': 'application/json'
            }
       });
-      const updatedData = await response.json();
-      dispatch(updateData(data._id, updatedData));
+      const updateddata = await response.json();
+      console.log(updateddata);
+      dispatch(updateData(data._id, updateddata));
       successMessage(
         "content updated"
     );

@@ -3,10 +3,9 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { GetSingleContent } from '../redux/thunk/getSingleContent';
 
-const Card = ({data}) => {
+const Card = ({data, handleAddToHistory}) => {
 
       const dispatch= useDispatch();
-
 
     return (
         <div className="card bg-base-100 shadow-xl ">
@@ -14,9 +13,11 @@ const Card = ({data}) => {
         <div className="card-body">
           <h2 className="card-title">{data.title}</h2>
           <p>{data.description.slice(0, 200)}</p>
+           <p>{data.date}</p>
           <div className="card-actions justify-end">
-           <Link to={`/home/:${data._id}`} >  <button onClick={()=>dispatch(GetSingleContent(data._id))} className="btn btn-primary">Details</button></Link>
+           <Link onClick={()=>handleAddToHistory()} to={`/home/:${data._id}`} >  <button onClick={()=>dispatch(GetSingleContent(data._id))}  className="btn btn-primary">Details</button></Link>
           </div>
+           
         </div>
       </div>
     );

@@ -6,6 +6,7 @@ import addContentData from "../redux/thunk/AddContent";
 const PostContent = () => {
   const { register, handleSubmit, reset } = useForm();
   const [imagePreview, setImagePreview] = useState("");
+   const date = new Date().toLocaleString();
 
   const handleInputChange = (event) => {
      
@@ -37,8 +38,9 @@ const PostContent = () => {
           title: data.title,
           description: data.description,
            Image: photo_url,
+           date
         };
-        //  console.log(contents);
+         console.log(contents);
         dispatch(addContentData(contents));
       });
 

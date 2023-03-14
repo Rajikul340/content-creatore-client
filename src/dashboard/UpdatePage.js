@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { updateData } from "../redux/action/actionCreators";
 import { updateDataAsync } from "../redux/thunk/UpdateContent";
 
 const UpdatePage = ({ data }) => {
-  console.log(data);
+  console.log(data.title);
 
   const { register, handleSubmit, reset } = useForm();
   const [imagePreview, setImagePreview] = useState("");
   const dispatch = useDispatch();
   const content = useSelector((state) => state.content);
-  const { loading, contentData } = content;
+  const { loading, contentData, updateData } = content;
 
-  console.log(contentData);
+  // console.log(updateData);
 
   const handleInputChange = (event) => {
     const file = event.target.files[0];
@@ -30,7 +29,7 @@ const UpdatePage = ({ data }) => {
       description: event.description,
       _id: data._id,
     };
-  
+      
     dispatch(updateDataAsync(contents));
 
     reset();
@@ -53,7 +52,7 @@ const UpdatePage = ({ data }) => {
               type="text"
               className="border outline-0"
               id="title"
-              defaultValue={data.title}
+              placeholder={data.title}
               {...register("title")}
             />
           </div>
