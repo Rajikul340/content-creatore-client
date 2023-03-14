@@ -13,7 +13,7 @@ export const LAST_UPLOAD = "LAST_UPLOAD"
 export const FIRST_UPLOAD = "FIRST_UPLOAD"
 export const ADD_TO_HISTORY = 'ADD_TO_HISTORY';
 export const REMOVE_FROM_HISTORY = 'REMOVE_FROM_HISTORY';
-
+export  const SEARCH_CONTENT = "SEARCH_CONTENT"
 
 
 

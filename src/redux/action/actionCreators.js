@@ -1,6 +1,7 @@
 import app from "../../firbase/firebase";
 import {
   ADD_CONTENT,
+  ADD_TAG_FILTER,
   ADD_TO_HISTORY,
   DELETE_CONTENT,
   GET_CONTENT_SUCCESS,
@@ -8,6 +9,8 @@ import {
   LAST_UPLOAD,
   LOGIN_USER,
   REMOVE_FROM_HISTORY,
+  REMOVE_TAG_FILTER,
+  SEARCH_CONTENT,
   SET_LOADING,
   SIGNOUT_USER,
   SIGNUP_USER,
@@ -141,4 +144,13 @@ export const getUpdatedata =(data)=>{
           type: GET_UPDATE_CONTENT,
           payload: data
          }
+}
+
+
+export const searchContent = (querydata) =>{
+
+  return {
+      type: SEARCH_CONTENT,
+      payload: querydata
+  }
 }

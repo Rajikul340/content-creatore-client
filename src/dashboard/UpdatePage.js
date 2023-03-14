@@ -53,7 +53,7 @@ const UpdatePage = ({ data }) => {
               className="border outline-0"
               id="title"
               placeholder={data.title}
-              {...register("title")}
+              {...register("tags")}
             />
           </div>
           <div className="flex flex-col w-full max-w-xs">

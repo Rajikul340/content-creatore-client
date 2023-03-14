@@ -37,6 +37,7 @@ const PostContent = () => {
         const contents = {
           title: data.title,
           description: data.description,
+          tags:data.tags,
            Image: photo_url,
            date
         };
@@ -64,6 +65,18 @@ const PostContent = () => {
               className="border outline-0"
               id="title"
               {...register("title")}
+            />
+          </div>
+          <div className="flex flex-col w-full max-w-xs">
+            <label className="mb-2" htmlFor="tags">
+              Tags
+            </label>
+            <input
+              type="text"
+              className="border outline-0"
+              id="tags"
+              required
+              {...register("tags")}
             />
           </div>
           <div className="flex flex-col w-full max-w-xs">
