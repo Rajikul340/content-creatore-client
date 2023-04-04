@@ -15,6 +15,7 @@ const Home = () => {
   const state = useSelector((state) => state);
   const { filters, content } = state;
   const { loading, contentData, search } = content;
+  console.log('data of home page ',contentData);
 
   const handleAddToHistory = () => {
     const url = window.location.pathname;
@@ -32,8 +33,7 @@ const Home = () => {
   let displyContent;
 
   if (contentData) {
-    displyContent =
-      Array.isArray(contentData) && contentData.length > 0 ? (
+    displyContent = Array.isArray(contentData) && contentData.length > 0 ? (
         <div className="grid md:grid-cols-3 gap-4 md:mt-5">
           {contentData?.map((item, index) => (
             <Card
@@ -53,7 +53,7 @@ const Home = () => {
         <div className="grid md:grid-cols-3 gap-4 md:mt-5">
           {contentData
             ?.filter((seacrContent) =>
-              seacrContent.tags.toLowerCase().includes(search.toLowerCase())
+              seacrContent?.tags?.toLowerCase()?.includes(search?.toLowerCase())
             )
             .map((item, index) => (
               <Card
@@ -64,12 +64,12 @@ const Home = () => {
             ))}
         </div>
       ) : (
-        <p>No content available</p>
+        <p className="text-center">No content available</p>
       );
   }
   return (
     <div>
-      <div className="flex gap-2 justify-end">
+      <div className="flex gap-2 md:justify-end my-2">
         <input
           type="text"
           className="border outline-0 mt-2"

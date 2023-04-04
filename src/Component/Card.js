@@ -12,7 +12,7 @@ const Card = ({data, handleAddToHistory}) => {
         <figure><img src={data.Image} alt="cover" className='md:h-52 h-80'/></figure>
         <div className="card-body">
           <h2 className="card-title">{data.title}</h2>
-          <p>{data.description.slice(0, 200)}</p>
+          <p>{data.description?.slice(0, 200)}</p>
            <p>{data.date}</p>
           <div className="card-actions justify-end">
            <Link onClick={()=>handleAddToHistory()} to={`/home/:${data._id}`} >  <button onClick={()=>dispatch(GetSingleContent(data._id))}  className="btn btn-primary">Details</button></Link>

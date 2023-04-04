@@ -7,7 +7,7 @@ import { addContent } from "../action/actionCreators";
 const addContentData = (contents) =>{
        const {successMessage} = AlertMessage()
     return async (dispatch, getState)=>{
-    const res= await fetch("http://localhost:5000/contents", {
+    const res= await fetch(" https://content-creator-server.vercel.app/contents", {
         method:"POST",
         body: JSON.stringify(contents),
         headers: {

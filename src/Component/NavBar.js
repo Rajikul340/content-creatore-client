@@ -9,14 +9,13 @@ const NavBar = () => {
   // console.log("navbar user ", user);
 
   return (
-    <div className="navbar bg-base-100 ">
+    <div className="navbar bg-base-100 border flex justify-between ">
       <div className="flex-1">
-    
         <Link to="/" className="btn btn-ghost normal-case text-xl">
           content creator
         </Link>
       </div>
-      <div className="flex-none">
+      <div className="">
         <ul className="menu menu-horizontal px-1">
           <li>
             <Link to="/dashboard">dashboard</Link>
@@ -38,9 +37,7 @@ const NavBar = () => {
             </>
           )}
         </ul>
-        
       </div>
-     
     </div>
   );
 };

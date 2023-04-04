@@ -6,7 +6,7 @@ export const updateDataAsync = (data) => async (dispatch) => {
         
     const {successMessage} =AlertMessage();
     try {
-      const response = await fetch(`http://localhost:5000/contents/${data._id}`, {
+      const response = await fetch(` https://content-creator-server.vercel.app/contents/${data._id}`, {
         method: 'PUT',
         body: JSON.stringify(data),
         headers: {

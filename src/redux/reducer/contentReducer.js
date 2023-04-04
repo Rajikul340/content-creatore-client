@@ -77,9 +77,9 @@ export const contentReducer = (state = initialContentState, action) => {
       const item = action.payload;
       const contentItem = state.contentData.slice().sort((a, b) => {
         if (item === "asc") {
-          return a.date.localeCompare(b.date);
+          return a?.date?.localeCompare(b.date);
         } else {
-          return b.date.localeCompare(a.date);
+          return b?.date?.localeCompare(a.date);
         }
       });
       return { ...state, contentData: contentItem };
