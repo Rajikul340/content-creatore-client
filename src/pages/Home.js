@@ -33,7 +33,7 @@ const Home = () => {
   let displyContent;
 
   if (contentData) {
-    displyContent = Array.isArray(contentData) && contentData.length > 0 ? (
+    displyContent = Array.isArray(contentData) && contentData?.length > 0 ? (
         <div className="grid md:grid-cols-3 gap-4 md:mt-5">
           {contentData?.map((item, index) => (
             <Card

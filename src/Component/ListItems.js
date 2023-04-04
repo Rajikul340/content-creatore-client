@@ -17,10 +17,10 @@ const ListItems = ({ data, index, handleGetId }) => {
       <td>
         <img className="w-8 h-8" src={data.Image} alt="img" />
       </td>
-      <td>{data.title}</td>
-      <td>{data.description.slice(0, 20)}</td>
+      <td>{data?.title}</td>
+      <td>{data?.description?.slice(0, 20)}</td>
       <td className="flex gap-2">
-      <label onClick={()=>handleGetId(data._id)}  htmlFor="my-modal-3" className="btn btn-sm btn-outline">
+      <label onClick={()=>handleGetId(data?._id)}  htmlFor="my-modal-3" className="btn btn-sm btn-outline">
        Edit
       </label>
       <input type="checkbox" id="my-modal-3" className="modal-toggle" />
@@ -33,7 +33,7 @@ const ListItems = ({ data, index, handleGetId }) => {
             ✕
           </label>
             {
-              content && content.map(data=><UpdatePage data={data}/>)
+              content && content?.map(data=><UpdatePage data={data}/>)
             }
         </div>
       </div>
